@@ -3,147 +3,45 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Portfolio Developer Akka - 3D Vibes</title>
+<title>Mario Jalan di Portfolio Akka</title>
 <style>
   body {
     margin: 0;
-    overflow: hidden;
-    font-family: 'Poppins', sans-serif;
     background: #121212;
-    color: #eee;
+    overflow-x: hidden;
   }
-  #container {
+  #mario {
     position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1; /* biar di belakang konten */
+    bottom: 30px;
+    left: -50px;
+    width: 50px;
+    height: 70px;
+    background-image: url('https://i.imgur.com/5f1QzXU.png'); /* sprite sheet Mario */
+    background-size: 500% 100%; /* 5 frames horizontal */
+    animation: walk 0.8s steps(5) infinite;
   }
-  .content {
-    position: relative;
-    max-width: 900px;
-    margin: 50px auto;
-    padding: 20px;
-    background: rgba(30,30,47,0.9);
-    border-radius: 14px;
-    box-shadow: 0 0 20px #80cbc4aa;
-    backdrop-filter: blur(8px);
-  }
-  h1 {
-    color: #80cbc4;
-    letter-spacing: 0.12em;
-    user-select: none;
-    margin-bottom: 10px;
-  }
-  nav a {
-    margin-right: 20px;
-    color: #80cbc4;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  nav a:hover {
-    color: #4f9a8a;
-  }
-  section {
-    margin-top: 30px;
-  }
-  h2 {
-    border-left: 5px solid #80cbc4;
-    padding-left: 12px;
-    margin-bottom: 10px;
-  }
-  p {
-    line-height: 1.5;
-    color: #b0bec5;
-  }
-  a.contact-link {
-    color: #80cbc4;
-    text-decoration: underline;
+  @keyframes walk {
+    from {background-position-x: 0;}
+    to {background-position-x: 100%;}
   }
 </style>
 </head>
 <body>
 
-<div id="container"></div>
+<div id="mario"></div>
 
-<div class="content">
-  <h1>AKKA PROGRAMER</h1>
-  <nav>
-    <a href="#about">Tentang Saya</a>
-    <a href="#projects">Project</a>
-    <a href="#contact">Kontak</a>
-  </nav>
-
-  <section id="about">
-    <h2>Tentang Saya</h2>
-    <p>Halo, saya Akka, developer yang fokus di pemrograman dan investasi crypto, khususnya XRP. Saya suka belajar teknologi baru dan membangun project yang bermanfaat.</p>
-  </section>
-
-  <section id="projects">
-    <h2>Project</h2>
-    <ul>
-      <li><strong>Crypto Tracker:</strong> Aplikasi web untuk tracking harga crypto realtime dengan API CoinGecko.</li>
-      <li><strong>Portfolio Website:</strong> Website portfolio responsive dan modern untuk menampilkan karya dan pengalaman saya.</li>
-      <li><strong>Chatbot FAQ:</strong> Chatbot sederhana untuk membantu menjawab pertanyaan umum secara otomatis.</li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>Kontak</h2>
-    <p>Email: <a href="mailto:akka@example.com" class="contact-link">akka@example.com</a></p>
-    <p>GitHub: <a href="https://github.com/azka150506" target="_blank" class="contact-link">github.com/azka150506</a></p>
-    <p>Instagram: <a href="https://instagram.com/akka" target="_blank" class="contact-link">@akka</a></p>
-  </section>
-</div>
-
-<!-- Three.js library CDN -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 <script>
-  // Setup scene, camera, renderer
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-  );
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.getElementById('container').appendChild(renderer.domElement);
+  const mario = document.getElementById('mario');
+  let pos = -50; // mulai dari luar kiri layar
 
-  // Cube geometry & material with cool gradient-ish colors
-  const geometry = new THREE.BoxGeometry(2, 2, 2);
-
-  // Buat material pake vertex colors biar keren
-  const materials = [
-    new THREE.MeshBasicMaterial({ color: 0x80cbc4 }),
-    new THREE.MeshBasicMaterial({ color: 0x4f9a8a }),
-    new THREE.MeshBasicMaterial({ color: 0x2c6f6f }),
-    new THREE.MeshBasicMaterial({ color: 0x80cbc4 }),
-    new THREE.MeshBasicMaterial({ color: 0x4f9a8a }),
-    new THREE.MeshBasicMaterial({ color: 0x2c6f6f }),
-  ];
-
-  const cube = new THREE.Mesh(geometry, materials);
-  scene.add(cube);
-
-  camera.position.z = 5;
-
-  // Animasi rotasi halus
-  function animate() {
-    requestAnimationFrame(animate);
-    cube.rotation.x += 0.005;
-    cube.rotation.y += 0.007;
-    renderer.render(scene, camera);
+  function moveMario() {
+    pos += 2; // kecepatan jalan (px per frame)
+    if (pos > window.innerWidth) pos = -50; // reset ke kiri kalau sudah keluar kanan
+    mario.style.left = pos + 'px';
+    requestAnimationFrame(moveMario);
   }
-  animate();
 
-  // Responsif
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
+  moveMario();
 </script>
 
 </body>

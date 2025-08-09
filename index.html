@@ -3,49 +3,76 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mario Neon Jalan Akka</title>
+<title>Wayang Classic Index - Akka</title>
 <style>
   body {
+    background: #1e1e1e;
+    color: #f5deb3; /* warna klasik kayu */
+    font-family: 'Georgia', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
     margin: 0;
-    background: #121212;
-    overflow-x: hidden;
   }
-  #mario {
-    position: fixed;
-    bottom: 40px;
-    left: -60px;
-    width: 50px;
-    height: 70px;
-    background-image: url('https://cdn-icons-png.flaticon.com/512/0/375.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    animation: step 1s infinite alternate;
-    filter: drop-shadow(0 0 8px #0ff);
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px #000;
   }
-  @keyframes step {
-    0% {transform: translateY(0);}
-    50% {transform: translateY(-8px);}
-    100% {transform: translateY(0);}
+  p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .wayang-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+  }
+  .wayang {
+    position: absolute;
+    width: 120px;
+    height: 250px;
+    background: url('https://i.imgur.com/0xUqP1k.png') no-repeat center/contain; /* contoh wayang PNG transparan */
+    top: 20px;
+    animation: slideLR 3s ease-in-out infinite alternate;
+  }
+  .wayang.right {
+    left: auto;
+    right: 0;
+    animation-delay: 1.5s;
+  }
+  .wayang.left {
+    left: 0;
+  }
+
+  @keyframes slideLR {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(20px);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 </style>
 </head>
 <body>
 
-<div id="mario"></div>
+<h1>Halo, Saya Akka</h1>
+<p>Programmer yang berjiwa wayang klasik, mengalir seperti kisah pewayangan, dengan logika sekuat senjata sakti.</p>
 
-<script>
-  const mario = document.getElementById('mario');
-  let pos = -60;
-
-  function moveMario() {
-    pos += 2;
-    if (pos > window.innerWidth) pos = -60;
-    mario.style.left = pos + 'px';
-    requestAnimationFrame(moveMario);
-  }
-
-  moveMario();
-</script>
+<div class="wayang-container">
+  <div class="wayang left"></div>
+  <div class="wayang right"></div>
+</div>
 
 </body>
 </html>

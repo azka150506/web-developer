@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mario Jalan Pake GIF</title>
+<title>Mario Jalan Simpel</title>
 <style>
   body {
     margin: 0;
@@ -14,10 +14,17 @@
     position: fixed;
     bottom: 30px;
     left: -60px;
-    width: 60px;
+    width: 50px;
     height: 70px;
-    background: url('https://i.gifer.com/origin/1d/1db0db3f1f1b56f5f0181a37107f7e0e_w200.gif') no-repeat;
+    background-image: url('https://upload.wikimedia.org/wikipedia/en/a/a9/MarioNSMBUDeluxe.png');
     background-size: contain;
+    background-repeat: no-repeat;
+    animation: step 1s infinite alternate;
+  }
+  @keyframes step {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-8px);}
+    100% {transform: translateY(0);}
   }
 </style>
 </head>

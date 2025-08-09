@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mario Jalan di Portfolio Akka</title>
+<title>Mario Jalan Pake GIF</title>
 <style>
   body {
     margin: 0;
@@ -13,16 +13,11 @@
   #mario {
     position: fixed;
     bottom: 30px;
-    left: -50px;
-    width: 50px;
+    left: -60px;
+    width: 60px;
     height: 70px;
-    background-image: url('https://raw.githubusercontent.com/akbar2506/mario-sprite/main/mario-sprite.png');
-    background-size: 500% 100%; /* 5 frames */
-    animation: walk 0.8s steps(5) infinite;
-  }
-  @keyframes walk {
-    from {background-position-x: 0;}
-    to {background-position-x: 100%;}
+    background: url('https://i.gifer.com/origin/1d/1db0db3f1f1b56f5f0181a37107f7e0e_w200.gif') no-repeat;
+    background-size: contain;
   }
 </style>
 </head>
@@ -32,11 +27,11 @@
 
 <script>
   const mario = document.getElementById('mario');
-  let pos = -50; // mulai dari luar kiri layar
+  let pos = -60;
 
   function moveMario() {
-    pos += 2; // kecepatan jalan
-    if (pos > window.innerWidth) pos = -50; // reset ke kiri
+    pos += 2;
+    if (pos > window.innerWidth) pos = -60;
     mario.style.left = pos + 'px';
     requestAnimationFrame(moveMario);
   }

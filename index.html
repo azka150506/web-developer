@@ -3,264 +3,148 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Portfolio Developer Akka</title>
+<title>Portfolio Developer Akka - 3D Vibes</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-  /* Reset & base */
-  * {
-    box-sizing: border-box;
-  }
   body {
     margin: 0;
+    overflow: hidden;
     font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    background: var(--bg);
-    color: var(--text);
-    transition: background 0.5s, color 0.5s;
-    scroll-behavior: smooth;
+    background: #121212;
+    color: #eee;
   }
-
-  :root {
-    --bg: #121212;
-    --card-bg: #1e1e2f;
-    --text: #eee;
-    --primary: #80cbc4;
-    --primary-hover: #4f9a8a;
-    --shadow: rgba(0,0,0,0.7);
+  #container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* biar di belakang konten */
   }
-
-  [data-theme="light"] {
-    --bg: #f7f9fc;
-    --card-bg: #fff;
-    --text: #222;
-    --primary: #4a90e2;
-    --primary-hover: #357ABD;
-    --shadow: rgba(0,0,0,0.15);
+  .content {
+    position: relative;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(30,30,47,0.9);
+    border-radius: 14px;
+    box-shadow: 0 0 20px #80cbc4aa;
+    backdrop-filter: blur(8px);
   }
-
-  /* Header */
-  header {
-    background: var(--card-bg);
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: 0 2px 6px var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    color: var(--primary);
+  h1 {
+    color: #80cbc4;
     letter-spacing: 0.12em;
     user-select: none;
+    margin-bottom: 10px;
   }
-
-  nav {
-    margin-top: 8px;
-  }
-
   nav a {
-    color: var(--primary);
-    margin: 0 12px;
+    margin-right: 20px;
+    color: #80cbc4;
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease;
   }
-
   nav a:hover {
-    color: var(--primary-hover);
+    color: #4f9a8a;
   }
-
-  /* Dark/light toggle */
-  .theme-toggle {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    background: var(--card-bg);
-    border: none;
-    padding: 8px 12px;
-    border-radius: 24px;
-    color: var(--primary);
-    cursor: pointer;
-    font-weight: 700;
-    box-shadow: 0 4px 12px var(--shadow);
-    transition: background 0.3s, color 0.3s;
-    user-select: none;
-  }
-
-  .theme-toggle:hover {
-    background: var(--primary);
-    color: var(--bg);
-  }
-
-  /* Main */
-  main {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
-  }
-
   section {
-    margin-bottom: 50px;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 1s forwards;
+    margin-top: 30px;
   }
-
-  section:nth-child(1) {
-    animation-delay: 0.3s;
-  }
-  section:nth-child(2) {
-    animation-delay: 0.6s;
-  }
-  section:nth-child(3) {
-    animation-delay: 0.9s;
-  }
-
-  @keyframes fadeUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   h2 {
-    border-left: 5px solid var(--primary);
-    padding-left: 10px;
-    margin-bottom: 15px;
+    border-left: 5px solid #80cbc4;
+    padding-left: 12px;
+    margin-bottom: 10px;
   }
-
-  .intro {
-    font-size: 1.1rem;
-    color: var(--text);
+  p {
+    line-height: 1.5;
+    color: #b0bec5;
   }
-
-  /* Project cards */
-  .projects {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  }
-
-  .project-card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 20px var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 40px var(--primary);
-  }
-
-  .project-card h3 {
-    margin-top: 0;
-    color: var(--primary);
-  }
-
-  .project-card p {
-    font-size: 0.95rem;
-    color: var(--text);
-  }
-
-  /* Contact */
-  footer {
-    background: var(--card-bg);
-    padding: 20px;
-    text-align: center;
-    color: var(--primary);
-    font-weight: 600;
-    letter-spacing: 0.05em;
-  }
-
-  /* Responsive */
-  @media (max-width: 600px) {
-    header h1 {
-      font-size: 1.8rem;
-    }
-
-    nav a {
-      margin: 0 8px;
-      font-size: 0.9rem;
-    }
+  a.contact-link {
+    color: #80cbc4;
+    text-decoration: underline;
   }
 </style>
 </head>
 <body>
 
-<button class="theme-toggle" aria-label="Toggle dark/light mode">🌞</button>
+<div id="container"></div>
 
-<header>
+<div class="content">
   <h1>AKKA PROGRAMER</h1>
   <nav>
     <a href="#about">Tentang Saya</a>
     <a href="#projects">Project</a>
     <a href="#contact">Kontak</a>
   </nav>
-</header>
 
-<main>
   <section id="about">
     <h2>Tentang Saya</h2>
-    <p class="intro">
-      Halo, saya Akka, developer yang fokus di pemrograman dan investasi crypto, khususnya XRP. Saya suka belajar teknologi baru dan membangun project yang bermanfaat.
-    </p>
+    <p>Halo, saya Akka, developer yang fokus di pemrograman dan investasi crypto, khususnya XRP. Saya suka belajar teknologi baru dan membangun project yang bermanfaat.</p>
   </section>
 
   <section id="projects">
     <h2>Project</h2>
-    <div class="projects">
-      <div class="project-card">
-        <h3>Crypto Tracker</h3>
-        <p>Aplikasi web untuk tracking harga crypto realtime dengan API CoinGecko.</p>
-      </div>
-      <div class="project-card">
-        <h3>Portfolio Website</h3>
-        <p>Website portfolio responsive dan modern untuk menampilkan karya dan pengalaman saya.</p>
-      </div>
-      <div class="project-card">
-        <h3>Chatbot FAQ</h3>
-        <p>Chatbot sederhana untuk membantu menjawab pertanyaan umum secara otomatis.</p>
-      </div>
-    </div>
+    <ul>
+      <li><strong>Crypto Tracker:</strong> Aplikasi web untuk tracking harga crypto realtime dengan API CoinGecko.</li>
+      <li><strong>Portfolio Website:</strong> Website portfolio responsive dan modern untuk menampilkan karya dan pengalaman saya.</li>
+      <li><strong>Chatbot FAQ:</strong> Chatbot sederhana untuk membantu menjawab pertanyaan umum secara otomatis.</li>
+    </ul>
   </section>
 
   <section id="contact">
     <h2>Kontak</h2>
-    <p>Email: <a href="mailto:akka@example.com" style="color:var(--primary);">akka@example.com</a></p>
-    <p>GitHub: <a href="https://github.com/azka150506" target="_blank" rel="noopener" style="color:var(--primary);">github.com/azka150506</a></p>
-    <p>Instagram: <a href="https://instagram.com/akka" target="_blank" rel="noopener" style="color:var(--primary);">@akka</a></p>
+    <p>Email: <a href="mailto:akka@example.com" class="contact-link">akka@example.com</a></p>
+    <p>GitHub: <a href="https://github.com/azka150506" target="_blank" class="contact-link">github.com/azka150506</a></p>
+    <p>Instagram: <a href="https://instagram.com/akka" target="_blank" class="contact-link">@akka</a></p>
   </section>
-</main>
+</div>
 
-<footer>
-  &copy; 2025 Akka Programer
-</footer>
-
+<!-- Three.js library CDN -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 <script>
-  const toggleBtn = document.querySelector('.theme-toggle');
-  const root = document.documentElement;
+  // Setup scene, camera, renderer
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  );
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.getElementById('container').appendChild(renderer.domElement);
 
-  // Default theme is dark
-  let currentTheme = 'dark';
+  // Cube geometry & material with cool gradient-ish colors
+  const geometry = new THREE.BoxGeometry(2, 2, 2);
 
-  toggleBtn.addEventListener('click', () => {
-    if(currentTheme === 'dark') {
-      root.setAttribute('data-theme', 'light');
-      toggleBtn.textContent = '🌙';
-      currentTheme = 'light';
-    } else {
-      root.setAttribute('data-theme', 'dark');
-      toggleBtn.textContent = '🌞';
-      currentTheme = 'dark';
-    }
+  // Buat material pake vertex colors biar keren
+  const materials = [
+    new THREE.MeshBasicMaterial({ color: 0x80cbc4 }),
+    new THREE.MeshBasicMaterial({ color: 0x4f9a8a }),
+    new THREE.MeshBasicMaterial({ color: 0x2c6f6f }),
+    new THREE.MeshBasicMaterial({ color: 0x80cbc4 }),
+    new THREE.MeshBasicMaterial({ color: 0x4f9a8a }),
+    new THREE.MeshBasicMaterial({ color: 0x2c6f6f }),
+  ];
+
+  const cube = new THREE.Mesh(geometry, materials);
+  scene.add(cube);
+
+  camera.position.z = 5;
+
+  // Animasi rotasi halus
+  function animate() {
+    requestAnimationFrame(animate);
+    cube.rotation.x += 0.005;
+    cube.rotation.y += 0.007;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // Responsif
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
   });
 </script>
 
 </body>
-  </html>
+</html>

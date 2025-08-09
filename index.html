@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portfolio Developer Akka</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.5s, color 0.5s;
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    --bg: #121212;
+    --card-bg: #1e1e2f;
+    --text: #eee;
+    --primary: #80cbc4;
+    --primary-hover: #4f9a8a;
+    --shadow: rgba(0,0,0,0.7);
+  }
+
+  [data-theme="light"] {
+    --bg: #f7f9fc;
+    --card-bg: #fff;
+    --text: #222;
+    --primary: #4a90e2;
+    --primary-hover: #357ABD;
+    --shadow: rgba(0,0,0,0.15);
+  }
+
+  /* Header */
+  header {
+    background: var(--card-bg);
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 6px var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: var(--primary);
+    letter-spacing: 0.12em;
+    user-select: none;
+  }
+
+  nav {
+    margin-top: 8px;
+  }
+
+  nav a {
+    color: var(--primary);
+    margin: 0 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover {
+    color: var(--primary-hover);
+  }
+
+  /* Dark/light toggle */
+  .theme-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: var(--card-bg);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 24px;
+    color: var(--primary);
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: background 0.3s, color 0.3s;
+    user-select: none;
+  }
+
+  .theme-toggle:hover {
+    background: var(--primary);
+    color: var(--bg);
+  }
+
+  /* Main */
+  main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  section {
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s forwards;
+  }
+
+  section:nth-child(1) {
+    animation-delay: 0.3s;
+  }
+  section:nth-child(2) {
+    animation-delay: 0.6s;
+  }
+  section:nth-child(3) {
+    animation-delay: 0.9s;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  h2 {
+    border-left: 5px solid var(--primary);
+    padding-left: 10px;
+    margin-bottom: 15px;
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    color: var(--text);
+  }
+
+  /* Project cards */
+  .projects {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 40px var(--primary);
+  }
+
+  .project-card h3 {
+    margin-top: 0;
+    color: var(--primary);
+  }
+
+  .project-card p {
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  /* Contact */
+  footer {
+    background: var(--card-bg);
+    padding: 20px;
+    text-align: center;
+    color: var(--primary);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 1.8rem;
+    }
+
+    nav a {
+      margin: 0 8px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" aria-label="Toggle dark/light mode">🌞</button>
+
+<header>
+  <h1>AKKA PROGRAMER</h1>
+  <nav>
+    <a href="#about">Tentang Saya</a>
+    <a href="#projects">Project</a>
+    <a href="#contact">Kontak</a>
+  </nav>
+</header>
+
+<main>
+  <section id="about">
+    <h2>Tentang Saya</h2>
+    <p class="intro">
+      Halo, saya Akka, developer yang fokus di pemrograman dan investasi crypto, khususnya XRP. Saya suka belajar teknologi baru dan membangun project yang bermanfaat.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Project</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Crypto Tracker</h3>
+        <p>Aplikasi web untuk tracking harga crypto realtime dengan API CoinGecko.</p>
+      </div>
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>Website portfolio responsive dan modern untuk menampilkan karya dan pengalaman saya.</p>
+      </div>
+      <div class="project-card">
+        <h3>Chatbot FAQ</h3>
+        <p>Chatbot sederhana untuk membantu menjawab pertanyaan umum secara otomatis.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Kontak</h2>
+    <p>Email: <a href="mailto:akka@example.com" style="color:var(--primary);">akka@example.com</a></p>
+    <p>GitHub: <a href="https://github.com/azka150506" target="_blank" rel="noopener" style="color:var(--primary);">github.com/azka150506</a></p>
+    <p>Instagram: <a href="https://instagram.com/akka" target="_blank" rel="noopener" style="color:var(--primary);">@akka</a></p>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Akka Programer
+</footer>
+
+<script>
+  const toggleBtn = document.querySelector('.theme-toggle');
+  const root = document.documentElement;
+
+  // Default theme is dark
+  let currentTheme = 'dark';
+
+  toggleBtn.addEventListener('click', () => {
+    if(currentTheme === 'dark') {
+      root.setAttribute('data-theme', 'light');
+      toggleBtn.textContent = '🌙';
+      currentTheme = 'light';
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      toggleBtn.textContent = '🌞';
+      currentTheme = 'dark';
+    }
+  });
+</script>
+
+</body>
+  </html>
